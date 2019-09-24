@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf3be387e2a4e99adb79dd2ff88339a, type: 3}
+  m_Name: BlocksDataBase
+  m_EditorClassIdentifier: 
+  _blocks:
+  - _color: {r: 0, g: 1, b: 0.92101526, a: 1}
+    _lives: 1
+    _isSpawnBooster: 0
+  - _color: {r: 0.9085845, g: 1, b: 0, a: 1}
+    _lives: 2
+    _isSpawnBooster: 0
+  - _color: {r: 1, g: 0, b: 0.8144698, a: 1}
+    _lives: 3
+    _isSpawnBooster: 0
+  - _color: {r: 0, g: 0.28931952, b: 1, a: 1}
+    _lives: 4
+    _isSpawnBooster: 0
+  - _color: {r: 0.8962264, g: 0.8962264, b: 0.8962264, a: 1}
+    _lives: 5
+    _isSpawnBooster: 1
