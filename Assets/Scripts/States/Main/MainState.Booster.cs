@@ -18,11 +18,23 @@ namespace States.Main
                 .GetComponent<Booster>();
             booster.Initialize(boosterData);
             booster.transform.position = position;
+            booster.OnCollisionEnter2DEvent += OnBoosterCollisionEnter2D;
+        }
+
+        private void OnBoosterCollisionEnter2D(Collision2D collision2D)
+        {
+            var wall = collision2D.gameObject.GetComponent<Wall>();
+            if (wall != null && wall == _bottomWall)
+            {
+                DestroyBooster(collision2D.otherCollider.GetComponent<Booster>());
+            }
         }
 
         private void DestroyBooster(Booster booster)
         {
             Object.Destroy(booster.gameObject);
         }
+        
+        
     }
 }

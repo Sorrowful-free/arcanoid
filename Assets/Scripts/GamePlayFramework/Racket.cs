@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GamePlayFramework
 {
-    public class Racket : Interactable
+    public class Racket : CollidableAndBoostable
     {
         public Vector2 Size
         {

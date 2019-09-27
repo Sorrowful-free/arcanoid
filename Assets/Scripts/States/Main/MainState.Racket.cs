@@ -60,7 +60,7 @@ namespace States.Main
             balls[0] = original;
             for (int i = 0; i < amount; i++)
             {
-                var cloneBall = SpawnBall(original.transform.position);
+                var cloneBall = CloneBall(original);
                 balls[i + 1] = cloneBall;
             }
 

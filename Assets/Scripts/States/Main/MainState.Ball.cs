@@ -41,6 +41,14 @@ namespace States.Main
             return ball;
         }
 
+        private Ball CloneBall(Ball originalBall)
+        {
+            var cloneBall = Object.Instantiate(originalBall.gameObject).GetComponent<Ball>();
+            _balls.Add(cloneBall);
+            cloneBall.OnCollisionEnter2DEvent += OnBallCollisionEnter2D;
+            return cloneBall;
+        }
+
         private void OnBallCollisionEnter2D(Collision2D collision2D)
         {
             var block = collision2D.gameObject.GetComponent<Block>();
@@ -63,12 +71,19 @@ namespace States.Main
                 }
             }
 
-
             if (!Configs.CHEAT_NEWER_LOSE && wall != null && wall == _bottomWall)
             {
                 GameApplication.SetState(GameApplicationStateType.Transition, GameApplicationStateType.GameOver,
                     new object[] {_levelIndex, true});
             }
+            
+            var ball = collision2D.otherCollider.GetComponent<Ball>();
+            if (ball != null)
+            {
+                ball.ApplySimpleRandom();   
+                Debug.Log("random");
+            }
+            
         }
 
         private void DestroyBall(Ball ball)

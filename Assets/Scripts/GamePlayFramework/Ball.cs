@@ -1,10 +1,11 @@
 using System;
 using DataBases;
 using UnityEngine;
+using Random = System.Random;
 
 namespace GamePlayFramework
 {
-    public class Ball : Interactable
+    public class Ball : CollidableAndBoostable
     {
         public override void ApplyBoosterEffect(BoosterEffect boosterEffect)
         {
@@ -26,9 +27,20 @@ namespace GamePlayFramework
             var body = GetComponent<Rigidbody2D>(); //because rigidbody is reserved name
             body.velocity = Vector2.zero;
             body.isKinematic = false;
-            Debug.Log(direction);
             body.AddForceAtPosition(direction * Configs.BALL_THROW_SPEED, transform.position, ForceMode2D.Impulse);
             IsThrown = true;
+        }
+
+        public void ApplySimpleRandom()
+        {
+            var body = GetComponent<Rigidbody2D>();
+            var velocity = body.velocity;
+            var scalarVelocity = velocity.magnitude;
+
+            var velocityDirection = velocity.normalized;
+            velocityDirection.x += UnityEngine.Random.Range(-Configs.BALL_RANDOM_FORCE, Configs.BALL_RANDOM_FORCE);
+            velocityDirection.y += UnityEngine.Random.Range(-Configs.BALL_RANDOM_FORCE, Configs.BALL_RANDOM_FORCE);
+            body.velocity = velocityDirection.normalized * scalarVelocity;
         }
         
         private void MultiplySpeed(int amount)

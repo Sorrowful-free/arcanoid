@@ -1,10 +1,9 @@
 using System;
-using DataBases;
 using UnityEngine;
 
 namespace GamePlayFramework
 {
-    public abstract class Interactable : MonoBehaviour
+    public abstract class Collidable : MonoBehaviour
     {
         public event Action<Collision2D> OnCollisionEnter2DEvent;
 
@@ -12,7 +11,5 @@ namespace GamePlayFramework
         {
             OnCollisionEnter2DEvent?.Invoke(other);
         }
-
-        public abstract void ApplyBoosterEffect(BoosterEffect boosterEffect);
     }
 }

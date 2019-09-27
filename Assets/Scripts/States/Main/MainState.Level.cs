@@ -21,8 +21,8 @@ namespace States.Main
 
         private void InitializeLevel(int levelIndex)
         {
-            _levelIndex = levelIndex;
-            _levelData = GameApplication.LevelsDataBase.Levels[levelIndex];
+            _levelIndex = Mathf.Max(0,Mathf.Min(levelIndex,GameApplication.LevelsDataBase.Levels.Length-1));
+            _levelData = GameApplication.LevelsDataBase.Levels[_levelIndex];
             _levelBlockDatas = _levelData.AvailableBlocks.Select(e => GameApplication.BlocksDataBase.Blocks[e])
                 .ToArray();
             _levelBoosterDatas = _levelData.AvailableBoosters.Select(e => GameApplication.BoostersDataBase.Boosters[e])

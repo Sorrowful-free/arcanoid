@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GamePlayFramework
 {
-    public class Booster :  MonoBehaviour
+    public class Booster :  Collidable
     {
         
         public BoosterData Data { get; private set; }
